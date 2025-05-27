@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 30 60% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 30 30% 96.1%;
+    --secondary-foreground: 240 10% 3.9%;
+    --muted: 30 30% 96.1%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 30 60% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 30% 89.8%;
+    --input: 30 30% 89.8%;
+    --ring: 30 60% 50%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 30 60% 80%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 30 60% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(at 40% 20%, hsla(var(--accent) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsla(var(--accent) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(var(--accent) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsla(var(--accent) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(var(--accent) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsla(var(--accent) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, hsla(var(--accent) / 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-image: 
+      linear-gradient(to bottom right, hsl(240 10% 3.9%), hsl(240 10% 5.9%)),
+      radial-gradient(at 40% 20%, hsla(var(--accent) / 0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsla(var(--accent) / 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(var(--accent) / 0.2) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsla(var(--accent) / 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(var(--accent) / 0.2) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsla(var(--accent) / 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, hsla(var(--accent) / 0.2) 0px, transparent 50%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-md font-medium transition-all duration-300 relative overflow-hidden;
+    background-image: linear-gradient(
+      45deg,
+      hsl(var(--primary)),
+      hsl(var(--accent)),
+      hsl(var(--primary))
+    );
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    box-shadow: 0 4px 15px -3px hsla(var(--primary) / 0.3);
+  }
+  
+  .btn-primary:hover {
+    background-position: 100% 50%;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px -3px hsla(var(--primary) / 0.4);
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-3 rounded-md font-medium transition-all duration-300;
+    background-image: linear-gradient(
+      45deg,
+      hsl(var(--secondary)),
+      hsl(var(--accent) / 0.2),
+      hsl(var(--secondary))
+    );
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    box-shadow: 0 4px 15px -3px hsla(var(--secondary) / 0.2);
+  }
+  
+  .btn-secondary:hover {
+    background-position: 100% 50%;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px -3px hsla(var(--secondary) / 0.3);
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .card {
+    @apply bg-card rounded-lg border shadow-sm hover:shadow-md transition-all duration-300;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--card)),
+      hsl(var(--card) / 0.95)
+    );
+    box-shadow: 0 4px 6px -1px hsla(var(--card) / 0.1),
+                0 2px 4px -1px hsla(var(--card) / 0.06);
+  }
+
+  .dark .card {
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--card)),
+      hsl(var(--card) / 0.98)
+    );
+    box-shadow: 0 4px 6px -1px hsla(var(--card) / 0.2),
+                0 2px 4px -1px hsla(var(--card) / 0.1);
+    border: 1px solid hsla(var(--border) / 0.2);
+  }
+
+  .dark .card:hover {
+    box-shadow: 0 10px 15px -3px hsla(var(--card) / 0.3),
+                0 4px 6px -2px hsla(var(--card) / 0.2);
+    transform: translateY(-2px);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+    background-size: 200% 100%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Light theme specific styles */
+  :root {
+    .card {
+      background-image: linear-gradient(
+        135deg,
+        hsl(var(--card)),
+        hsl(var(--card) / 0.98)
+      );
+      box-shadow: 0 4px 6px -1px hsla(var(--card) / 0.1),
+                  0 2px 4px -1px hsla(var(--card) / 0.06);
+      border: 1px solid hsla(var(--border) / 0.2);
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 15px -3px hsla(var(--card) / 0.2),
+                  0 4px 6px -2px hsla(var(--card) / 0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background-image: linear-gradient(
+        45deg,
+        hsl(var(--primary)),
+        hsl(var(--accent)),
+        hsl(var(--primary))
+      );
+      box-shadow: 0 4px 15px -3px hsla(var(--primary) / 0.2);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px -3px hsla(var(--primary) / 0.3);
+    }
+
+    .btn-secondary {
+      background-image: linear-gradient(
+        45deg,
+        hsl(var(--secondary)),
+        hsl(var(--accent) / 0.1),
+        hsl(var(--secondary))
+      );
+      box-shadow: 0 4px 15px -3px hsla(var(--secondary) / 0.1);
+    }
+
+    .btn-secondary:hover {
+      box-shadow: 0 6px 20px -3px hsla(var(--secondary) / 0.2);
+    }
+  }
+} 
